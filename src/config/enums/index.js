@@ -1,0 +1,10 @@
+export { default as Genders } from "./genders";
+export { default as Profile } from "./profile";
+export { default as List } from "./landingList";
+export { default as Dormitory } from "./dormitory";
+export { default as DormTypes } from "./dormTypes";
+export { default as BloodTypes } from "./bloodTypes";
+export { default as SchoolFees } from "./schoolFees";
+export { default as DormCapacity } from "./dormCapacity";
+export { default as Identification } from "./identification";
+export { default as MaritalStatuses } from "./maritalStatuses";
