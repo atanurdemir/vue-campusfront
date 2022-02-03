@@ -1,6 +1,6 @@
 <template>
   <div class="p-10">
-    <div class="flex flex-wrap">
+    <div v-if="!isLoading" class="flex flex-wrap">
       <div class="bg-white rounded-lg shadow-lg">
         <ul class="divide-y-2 divide-gray-100">
           <li class="p-3">
@@ -28,6 +28,7 @@
         </ul>
       </div>
     </div>
+    <spinner v-else />
   </div>
 </template>
 
@@ -35,14 +36,18 @@
 import { ref, onBeforeMount } from "vue";
 
 import { UserService } from "@/services";
+import Spinner from "@/components/spinner/index.vue";
 export default {
   name: "ShowNotificationView",
-  components: {},
+  components: { Spinner },
   setup() {
+    const isLoading = ref(true);
     const notifications = ref({});
     onBeforeMount(async () => {
+      isLoading.value = true;
       const res = await UserService.notification.get();
       notifications.value = res.data;
+      isLoading.value = false;
     });
     async function remove(id) {
       await UserService.notification.remove(id);
@@ -50,6 +55,7 @@ export default {
     }
     return {
       remove,
+      isLoading,
       notifications,
     };
   },

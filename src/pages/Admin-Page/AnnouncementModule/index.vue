@@ -26,8 +26,8 @@ import { Notification } from "@/config/enums";
 import { enumToArray } from "@/config/utils";
 
 import ViewNotification from "./viewNotification";
-import CreateNotification from "./createNotification";
 import Portlet from "@/components/portlet/index.vue";
+import CreateNotification from "./createNotification";
 export default {
   name: "AnnouncementView",
   components: { Portlet, ViewNotification, CreateNotification },
