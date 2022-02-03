@@ -5,6 +5,7 @@ export { default as Dormitory } from "./dormitory";
 export { default as DormTypes } from "./dormTypes";
 export { default as BloodTypes } from "./bloodTypes";
 export { default as SchoolFees } from "./schoolFees";
+export { default as Notification } from "./notification";
 export { default as DormCapacity } from "./dormCapacity";
 export { default as Identification } from "./identification";
 export { default as MaritalStatuses } from "./maritalStatuses";

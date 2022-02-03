@@ -56,6 +56,7 @@ const dormitory = {
 const notification = {
   get: () => makeRequest("get", `notification`),
   add: (data) => makeRequestAuth("post", `notification/publish`, data),
+  remove: (data) => makeRequestAuth("delete", `notification/${data}`),
 };
 
 export default {

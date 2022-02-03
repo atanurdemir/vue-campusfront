@@ -39,11 +39,7 @@ export default {
       if (index === 1) status.value = "RequestDorm";
     }
 
-    return {
-      status,
-      activateTab,
-      collapseItems,
-    };
+    return { status, activateTab, collapseItems };
   },
 };
 </script>

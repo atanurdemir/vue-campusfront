@@ -1,56 +1,45 @@
 <template>
   <div class="p-10">
     <portlet name="Announcements Panel">
-      <p>You can create cafeteria request with that area!</p>
-      <div class="flex flex-wrap">
-        <Input>
-          <Label name="Announcement Title" />
-          <input
-            v-model="data.title"
-            type="text"
-            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-          />
-        </Input>
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="relative w-full mb-3">
-            <Label name="Announcement Message" />
-            <input
-              v-model="data.message"
-              type="email"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-            />
-          </div>
-        </div>
+      <div class="gap-4 justify-center">
         <button
-          class="border-0 px-3 py-3 text-white bg-blue-600 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-          @click.prevent="send"
+          v-for="item in collapseItems"
+          :key="item.id"
+          :title="item.title"
+          :style="
+            item.title === status ? 'border-bottom: 4px solid #36c6d3;' : ''
+          "
+          @click="activateTab(item.id)"
         >
-          Send
+          <p class="p-3">{{ item.fullTitle }}</p>
         </button>
+        <hr class="border-b-1 border-gray-200" />
       </div>
+      <component :is="status" />
     </portlet>
   </div>
 </template>
 
 <script>
-import { reactive } from "vue";
-import { UserService } from "@/services";
+import { ref, computed } from "vue";
+import { Notification } from "@/config/enums";
+import { enumToArray } from "@/config/utils";
 
-import Label from "@/components/label/index.vue";
-import Input from "@/components/input/index.vue";
+import ViewNotification from "./viewNotification";
+import CreateNotification from "./createNotification";
 import Portlet from "@/components/portlet/index.vue";
 export default {
   name: "AnnouncementView",
-  components: { Portlet, Label, Input },
+  components: { Portlet, ViewNotification, CreateNotification },
   setup() {
-    const data = reactive({
-      title: "",
-      message: "",
-    });
-    async function send() {
-      await UserService.notification.add(data);
+    const status = ref("ViewNotification");
+    const collapseItems = computed(() => enumToArray(Notification));
+
+    function activateTab(index) {
+      if (index === 0) status.value = "ViewNotification";
+      if (index === 1) status.value = "CreateNotification";
     }
-    return { data, send };
+    return { status, activateTab, collapseItems };
   },
 };
 </script>
