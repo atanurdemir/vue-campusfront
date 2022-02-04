@@ -127,15 +127,6 @@ const routes = [
     component: () => import("@/pages/Admin-Page/CafeteriaModule/index"),
   },
   {
-    path: "/admin/courses",
-    name: "CoursesModule",
-    meta: {
-      requiresAuth: true,
-      requiresAdmin: true,
-    },
-    component: () => import("@/pages/Admin-Page/CoursesModule/index"),
-  },
-  {
     path: "/admin/dormitories",
     name: "DormitoriesModule",
     meta: {

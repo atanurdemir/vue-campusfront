@@ -9,15 +9,6 @@
           <ul
             class="top-0 w-48 border rounded-md border-transparent shadow px-3 py-4 bg-campus-navyblue"
           >
-            <li class="py-1">
-              <button
-                to="/"
-                class="block text-white font-bold hover:text-regal-blue cursor-pointer"
-                @click="showModal = true"
-              >
-                Change Password
-              </button>
-            </li>
             <li class="py-1 min-w-screen">
               <button
                 class="block text-white font-bold hover:text-regal-blue cursor-pointer"

@@ -35,11 +35,6 @@
           message="Module that used to manage students' dormitory information."
         />
         <Box
-          route="CoursesModule"
-          title="Courses Module"
-          message="Module that used to manage existing courses, add new courses or delete courses."
-        />
-        <Box
           route="AnnouncementModule"
           title="Announcements Module"
           message="Module that used to publish new announcements to students."
