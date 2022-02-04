@@ -36,6 +36,8 @@ const cafeteria = {
   addReserve: (data) => makeRequestAuth("post", `cafeteria/addreserv`, data),
   getReserve: (cafeteriaId) =>
     makeRequestAuth("get", `cafeteria/${cafeteriaId}`),
+  getReservations: (cafeteriaId) =>
+    makeRequestAuth("get", `cafeterias/${cafeteriaId}`),
 };
 
 const finance = {

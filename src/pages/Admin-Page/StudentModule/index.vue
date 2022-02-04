@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10">
+  <div class="p-10 min-h-screen">
     <portlet name="Student View Panel">
       <p>You can search students with mail!</p>
       <div class="bg-white rounded-lg shadow-lg">
