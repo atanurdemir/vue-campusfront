@@ -53,6 +53,7 @@ const dormitory = {
   approve: (userId) => makeRequestAuth("patch", `dormitory/approve/${userId}`),
   getByParameters: (type, capacity) =>
     makeRequest("get", `dormitory?type=${type}&capacity=${capacity}`),
+  getAll: () => makeRequest("get", `dormitory/all`),
 };
 
 const notification = {
