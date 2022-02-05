@@ -7,6 +7,7 @@ import { reactive } from "vue";
 import { onBeforeMount } from "vue";
 import { UserService } from "@/services";
 import Table from "@/components/table/index.vue";
+import { responseMessage } from "@/config/utils";
 export default {
   name: "TakenCoursesTableView",
   components: {
@@ -45,6 +46,9 @@ export default {
         const days = res.data[i].courseDays;
         const hours = res.data[i].courseHours;
         if (table.rows[days][hours]) {
+          responseMessage(
+            `The hours of these two classes overlap each other: ${table.rows[days][hours]} and ${res.data[i].courseCode}`
+          );
           table.rows[days][hours] += " " + res.data[i].courseCode;
         } else {
           table.rows[days][hours] = res.data[i].courseCode;

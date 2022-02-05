@@ -216,15 +216,18 @@ export default {
       isLoading.value = false;
     });
 
-    function calculateFee(entry, scholarship) {
+    function calculateFee(entryYear, scholarship) {
       const discount = Number(scholarship);
+      let year = entryYear;
+      if (entryYear < 2017) year = 2017;
+      if (entryYear > 2020) year = 2020;
+
       fee.value = {
-        maxFee: (schoolFees.value.maxFees[entry] * (100 - discount)) / 100,
+        maxFee: (schoolFees.value.maxFees[year] * (100 - discount)) / 100,
         advanceFee:
-          (schoolFees.value.advanceFees[entry] * (100 - discount)) / 100,
+          (schoolFees.value.advanceFees[year] * (100 - discount)) / 100,
       };
     }
-
     return { fee, userInfo, isLoading, schoolFees };
   },
 };

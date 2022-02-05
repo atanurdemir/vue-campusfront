@@ -26,7 +26,7 @@
     <div class="px-5">
       <div class="flex flex-col gap-5 text-left">
         <portlet name="Weekly Schedule" component="Schedule">
-          <Schedule :key="`sh-${refresh}`" class="my-4 px-5" />
+          <TakenCoursesTable :key="`sh-${refresh}`" class="my-4 px-5" />
         </portlet>
         <portlet name="Currently Taken Course" component="TakenCourses">
           <TakenCourses
@@ -47,15 +47,15 @@ import { useStore } from "vuex";
 import { UserService } from "@/services";
 import { responseMessage } from "@/config/utils";
 
+import TakenCourses from "./takenCourses";
+import TakenCoursesTable from "./takenCoursesTable";
 import Portlet from "@/components/portlet/index.vue";
-import Schedule from "@/pages/Landing-Page/schedule/index.vue";
-import TakenCourses from "@/pages/Registration-Page/takenCourses/index.vue";
 export default {
   name: "RegistrationView",
   components: {
     Portlet,
-    Schedule,
     TakenCourses,
+    TakenCoursesTable,
   },
   setup() {
     const data = ref();

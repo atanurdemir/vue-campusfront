@@ -2,24 +2,24 @@
   <table-lite
     :is-loading="table.isLoading"
     :columns="table.columns"
-    :rows="table.rows"
+    :rows="data.rows"
     :total="table.totalRecordCount"
     :sortable="table.sortable"
   />
 </template>
 
 <script>
-import { reactive, onBeforeMount } from "vue";
-
 import TableLite from "vue3-table-lite";
-import { UserService } from "@/services";
 export default {
   name: "TableView",
   components: {
     TableLite,
   },
+  props: {
+    data: { type: Object, required: true },
+  },
   setup() {
-    const table = reactive({
+    const table = {
       isLoading: false,
       columns: [
         {
@@ -76,48 +76,13 @@ export default {
           sortable: false,
         },
       ],
-      rows: [
-        {
-          days: "M",
-        },
-        {
-          days: "T",
-        },
-        {
-          days: "W",
-        },
-        {
-          days: "Th",
-        },
-        {
-          days: "F",
-        },
-        {
-          days: "Sa",
-        },
-        {
-          days: "Su",
-        },
-      ],
       totalRecordCount: 1,
       sortable: {
         order: "id",
         sort: "asc",
       },
-    });
-
-    onBeforeMount(async () => {
-      const res = await UserService.course.get();
-      for (let i = 0; i < res.data.length; i++) {
-        const days = res.data[i].courseDays;
-        const hours = res.data[i].courseHours;
-        table.rows[days][hours] = res.data[i].courseCode;
-      }
-    });
-
-    return {
-      table,
     };
+    return { table };
   },
 };
 </script>
